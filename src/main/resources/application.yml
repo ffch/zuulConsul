@@ -1,0 +1,21 @@
+server:
+   port: 8816
+spring:
+   profiles:
+      active: loc
+   application:
+      name: consulZuul
+   cloud:
+      consul:
+         host: 127.0.0.1
+         port: 8500
+         discovery:
+            prefer-ip-address: true
+            healthCheckPath: /consul/health
+zuul:
+   ignoredServices: 
+   routes:
+      util:
+         path: /util/**
+         sensitiveHeaders: 
+         serviceId: consulServer
